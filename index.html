@@ -387,11 +387,9 @@ const MOCK_EMAILS = [
     attachments:["assessment_instructions.pdf"] }
 ];
 
-function loadEmails(){
-  // Swap this for a real call when the n8n webhook is ready, e.g.:
-  //   return fetch("https://your-n8n-instance/webhook/emails").then(r => r.json());
-  // The webhook should resolve to an array shaped like MOCK_EMAILS above.
-  return Promise.resolve(MOCK_EMAILS);
+async function loadEmails() {
+  const response = await fetch("http://localhost:5678/webhook/email-dashboard");
+  return await response.json();
 }
 
 /* =========================================================
