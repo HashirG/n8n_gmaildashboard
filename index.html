@@ -255,6 +255,7 @@
     color:var(--text-dim); margin-right:8px; margin-bottom:8px; background:var(--paper);
   }
   .detail-actions{ margin-top:32px; padding-top:20px; border-top:1px solid var(--paper-line); display:flex; gap:10px; }
+  .email-content-label{font-size:12px; color:var(--text-faint); margin-top:20px; margin-bottom:8px; font-weight:500;}
 
   .toast{
     position:fixed; bottom:24px; left:50%;
@@ -567,7 +568,8 @@ function renderDetail(){
         ${flags.length ? `<div class="detail-flags">${flags.join("")}</div>` : ""}
       </div>
 
-      <div class="detail-body">${escapeHtml(email.body)}</div>
+      <div class="email-content-label">Email content</div>
+<div class="detail-body">${escapeHtml(email.body).replace(/\n/g,"<br>")}</div>
 
       ${email.attachments && email.attachments.length ? `
         <div class="attachments">
