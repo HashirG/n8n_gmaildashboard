@@ -561,7 +561,6 @@ function renderDetail(){
         <h2 class="detail-subject">${escapeHtml(email.subject)}</h2>
         <div class="detail-meta">
           <div class="row"><span class="k">From</span><span>${escapeHtml(email.sender)} &lt;${escapeHtml(email.senderEmail)}&gt;</span></div>
-          <div class="row"><span class="k">To</span><span>${escapeHtml(email.recipient)}</span></div>
           <div class="row"><span class="k">Date</span><span>${formatFullDate(email.date)}</span></div>
           <div class="row"><span class="k">Category</span><span>${escapeHtml(email.category)}</span></div>
         </div>
