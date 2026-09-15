@@ -221,7 +221,7 @@
   .email-body-col{ min-width:0; }
   .email-subject{ font-family:var(--serif); font-size:14.5px; margin:0 0 3px; }
   .email-summary{
-    font-style:italic; color:var(--text-dim); font-size:12.5px; line-height:1.45;
+    font-style:normal; color:var(--text-dim); font-size:12.5px; line-height:1.45;
     display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden;
   }
   .email-meta-col{ text-align:right; white-space:nowrap; padding-top:1px; }
@@ -403,7 +403,7 @@ function renderDashboard(){
     <div class="page-header">
       <div>
         <h1>Inbox</h1>
-        <div class="sub">${today} · mail synced from Gmail via n8n</div>
+        <div class="sub">${today} · Last 24 hours of mail</div>
       </div>
     </div>
 
