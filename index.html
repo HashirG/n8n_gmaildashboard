@@ -389,7 +389,36 @@ const MOCK_EMAILS = [
 
 async function loadEmails() {
   const response = await fetch("http://localhost:5678/webhook/email-dashboard");
-  return await response.json();
+  const emails = await response.json();
+
+  return emails.map(email => ({
+    id: email.id,
+    sender: email.sender_name,
+    senderEmail: email.sender_email,
+    recipient: email.recipient || "",
+    subject: email.subject,
+
+    // First non-special category becomes the main category
+    category:
+      email.category?.find(
+        c => c !== "Urgent" && c !== "Important"
+      ) || "Others",
+
+    // Check the category array for these flags
+    urgent: email.category?.includes("Urgent") || false,
+    important: email.category?.includes("Important") || false,
+
+    // Database timestamp → frontend date
+    date: email.received_at,
+
+    summary: email.summary,
+
+    // Your current DB output doesn't contain the email body yet
+    body: email.body || "",
+
+    // Database attachment_filenames → frontend attachments
+    attachments: email.attachment_filenames || []
+  }));
 }
 
 /* =========================================================
